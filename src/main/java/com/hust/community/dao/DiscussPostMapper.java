@@ -14,4 +14,10 @@ import java.util.List;
 public interface DiscussPostMapper {
     List<DiscussPost> selectDiscussPost(@Param("userId") int userId, @Param("offset") int offset, @Param("limit") int limit);
     int selectDiscussPostRows(@Param("userId") int userId);
+
+    int insertDiscussPost(DiscussPost discussPost);
+
+    DiscussPost selectDiscussPostById(int id);
+
+    int updateCommentCount(@Param("id") int id, @Param("commentCount") int commentCount);
 }
