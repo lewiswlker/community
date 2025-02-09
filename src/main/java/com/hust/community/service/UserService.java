@@ -49,8 +49,12 @@ public class UserService implements CommunityConstant {
     private String contextPath;
 
     public User findUserById(int userId) {
-
-        return userMapper.selectById(userId);
+//        return userMapper.selectById(userId);
+        User user = getCache(userId);
+        if (user == null) {
+            user = initCache(userId);
+        }
+        return user;
     }
 
     public Map<String, Object> register(User user) {
@@ -113,6 +117,7 @@ public class UserService implements CommunityConstant {
             return ACTIVATION_REPEAT;
         } else if (activationCode.equals(code)) {
             userMapper.updateStatus(userId, 1);
+            clearCache(userId);
             return ACTIVATION_SUCCESS;
         } else {
             return ACTIVATION_FAILURE;
@@ -181,13 +186,17 @@ public class UserService implements CommunityConstant {
     }
 
     public int updateHeader(int userId, String headerUrl) {
-        return userMapper.updateHeader(userId, headerUrl);
+        int rows = userMapper.updateHeader(userId, headerUrl);
+        clearCache(userId);
+        return rows;
     }
 
     public int updatePassword(int userId, String password) {
         User user = userMapper.selectById(userId);
         password = CommunityUtil.md5(password + user.getSalt());
-        return userMapper.updatePassword(userId, password);
+        int rows = userMapper.updatePassword(userId, password);
+        clearCache(userId);
+        return rows;
     }
 
     public User findUserByName(String username) {
