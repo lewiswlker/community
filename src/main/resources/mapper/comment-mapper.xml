@@ -33,5 +33,11 @@
         and entity_id = #{entityId}
     </select>
 
+    <select id="selectCommentById" resultType="com.hust.community.entity.Comment">
+        select <include refid="selectFields"/>
+        from comment
+        where id = #{id}
+    </select>
+
 
 </mapper>

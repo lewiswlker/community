@@ -37,4 +37,24 @@ public interface CommunityConstant {
      * 实体类型：人
      */
     int ENTITY_TYPE_USER = 3;
+    /**
+     * 主题：评论
+     */
+    String TOPIC_COMMENT = "comment";
+    /**
+     * 主题：点赞
+     */
+    String TOPIC_LIKE = "like";
+    /**
+     * 主题：关注
+     */
+    String TOPIC_FOLLOW = "follow";
+    /**
+     * 主题：发布帖子
+     */
+    String TOPIC_PUBLISH = "publish";
+    /**
+     * 系统用户ID
+     */
+    int SYSTEM_ID = 1;
 }

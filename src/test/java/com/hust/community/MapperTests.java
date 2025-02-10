@@ -8,10 +8,12 @@ import com.hust.community.entity.DiscussPost;
 import com.hust.community.entity.LoginTicket;
 import com.hust.community.entity.Message;
 import com.hust.community.entity.User;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 import java.util.List;
@@ -20,6 +22,8 @@ import java.util.List;
  * @author Liubo Ren
  * @version 1.0
  */
+
+@RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes = CommunityApplication.class)
 public class MapperTests {
