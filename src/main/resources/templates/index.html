@@ -3,10 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!--访问该页面时，在此处生成CSRF令牌	-->
+<!--	<meta name="_csrf" th:content="${_csrf.token}">-->
+<!--	<meta name="_csrf_header" th:content="${_csrf.headerName}">-->
+
 	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" th:href="@{css/global.css}" />
-	<title>牛客网-首页</title>
+	<title>校多多社区-首页</title>
 </head>
 <body>	
 	<div class="nk-container">
@@ -16,10 +21,11 @@
 				<!-- 导航 -->
 				<nav class="navbar navbar-expand-lg navbar-dark">
 					<!-- logo -->
-					<a class="navbar-brand" href="#"></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
+<!--					<a class="navbar-brand" href="#"></a>-->
+					<a class="navbar-brand" href="#">校多多社区</a>
+<!--					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--						<span class="navbar-toggler-icon"></span>-->
+<!--					</button>-->
 					<!-- 功能 -->
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
@@ -66,10 +72,10 @@
 					<!-- 筛选条件 -->
 					<ul class="nav nav-tabs mb-3">
 						<li class="nav-item">
-							<a class="nav-link active" href="#">最新</a>
+							<a th:class="|nav-link ${orderMode==0?'active':''}|" th:href="@{/index(orderMode=0)}">最新</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">最热</a>
+							<a th:class="|nav-link ${orderMode==1?'active':''}|" th:href="@{/index(orderMode=1)}">最热</a>
 						</li>
 					</ul>
 					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0"
